@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ users[0].division }} {{ users[0].guided_unguided }} Leaderboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-5 text-center">
+                <h1 class="fw-bold text-primary">Leaderboard</h1>
+                <h3>Division: {{ users[0].division }} {{ users[0].guided_unguided }}</h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Standing</th>
+                    <th>Angler</th>
+                    <th>Score</th>
+                    <!-- <th>Submission</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(users|length) %}
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{ users[i].first_name }} {{ users[i].last_name }}</td>
+                    <td>{{ users[i].total_score }}</td>
+                    <!-- <td></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if user.admin == 'true' %}
+    <div class="text-center mb-5">
+        <a href="/admin"><button class="btn btn-primary">Return to Dashboard</button></a>
+    </div>
+    {% else %}
+    <div class="text-center mb-5">
+        <a href="/dashboard"><button class="btn btn-primary">Return to Dashboard</button></a>
+    </div>
+    {% endif %}
+</body>
+</html>

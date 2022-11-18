@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-5 text-center">
+                <h1 class="fw-bold text-primary">Scorecard Submission</h1>
+                <h3>Division: {{user.division}} {{user.guided_unguided}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center mb-3">
+        <form action="/submit" method="post">
+            <div class="mb-3">
+                <label for="species" class="form-label">Species:</label>
+                <select class="form-select" aria-label="Default select example" name="species">
+                    <option selected value="Tarpon">Tarpon</option>
+                    <option value="Snook">Snook</option>
+                    <option value="Redfish">Red Fish</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="length" class="form-label">Length:</label>
+                <input type="number" name="length" class="form-control">
+            </div>
+            <div class="mb-4">
+                <label for="time_landed" class="form-label">Time landed:</label>
+                <input type="time" name="time_landed" class="form-control">
+            </div>
+            <div>
+                <h6>Tackle Multiplier: (x1, x1.25, x1.5)</h6>
+                <div class="d-flex p-3 justify-content-evenly">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="multiplier" id="bait" value="1" checked>
+                        <label class="form-check-label" for="Bait">Bait</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="multiplier" id="artificial" value="1.25">
+                        <label class="form-check-label" for="artificial">Artificial</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="multiplier" id="fly" value="1.5">
+                        <label class="form-check-label" for="fly">Fly</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </form>
+    </div>
+    <div class="text-center">
+        <a href="/dashboard">Return to Dashboard</a>
+    </div>
+</body>
+</html>

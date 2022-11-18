@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-5 text-center">
+                <h1 class="fw-bold">2022 Yule</h1>
+                <h3 class="fw-semibold">Fishing Tournament</h3>
+            </div>
+        </div>
+    </div>
+    {% with errors = get_flashed_messages(category_filter=["notinsession"]) %}
+        {% if errors %}
+        <div class="alert-message block-message error">
+        <!-- <a class="close" href="#">×</a> -->
+            <ul>
+                {%- for msg in errors %}
+                <li class="text-danger">{{ msg }}</li>
+                {% endfor -%}
+                </ul>
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% with errors = get_flashed_messages(category_filter=["login"]) %}
+        {% if errors %}
+        <div class="alert-message block-message error">
+        <!-- <a class="close" href="#">×</a> -->
+            <ul>
+                {%- for msg in errors %}
+                <li class="text-danger">{{ msg }}</li>
+                {% endfor -%}
+                </ul>
+        </div>
+        {% endif %}
+    {% endwith %}
+    <div class="container text-center">
+        <form action="/login" method="post">
+            <h1 class="text-primary fw-bold mb-3">Login</h1>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" name="email" class="form-control w-75 m-auto">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" class="form-control w-75 m-auto">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Login</button>
+        </form>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-4 text-center">
+                <h2 class="mb-4 fw-bold">Not registered?</h2>
+                <!-- <button href="/registration" class="btn btn-primary">Register</button> -->
+                <a href="/registration">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

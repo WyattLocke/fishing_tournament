@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-5 text-center">
+                <h1 class="fw-bold text-primary">Tournament Dashboard</h1>
+                <h3>Division: {{user.division}} {{user.guided_unguided}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12 p-4 text-start">
+                <h4>Welcome {{user.first_name}},</h4>
+            </div>
+            <div class="col-12 p-3 text-center">
+                <a href="/submission">Submit to your Scorecard</a>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <h3>Submission Details</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Species</th>
+                    <th>Length (inches)</th>
+                    <th>Time Landed</th>
+                    <th>Multiplier</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submission in submissions %}
+                <tr>
+                    <td>{{submission.species}}</td>
+                    <td>{{submission.length}}</td>
+                    <td>{{submission.time_landed}}</td>
+                    <td>{{submission.multiplier}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mb-4">
+        <a href="/leaderboard/{{user.division}}/{{user.guided_unguided}}"><button class="btn btn-primary">View Leaderboard</button></a>
+    </div>
+    <div class="text-center">
+        <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+    </div>
+</body>
+</html>
